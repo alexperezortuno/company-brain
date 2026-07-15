@@ -1,0 +1,34 @@
+instance:
+  name: Open Company Brain
+  language: es
+
+auth:
+  enabled: false
+
+modules:
+  filesystem:
+    enabled: true
+  local_ai:
+    enabled: false
+  workflows:
+    enabled: false
+
+storage:
+  relational:
+    provider: postgresql
+  vector:
+    provider: qdrant
+  objects:
+    provider: minio
+  cache:
+    provider: redis
+
+ai:
+  llm:
+    provider: ollama
+    base_url: http://ollama:11434
+    model: qwen3
+  embeddings:
+    provider: ollama
+    base_url: http://ollama:11434
+    model: nomic-embed-text
