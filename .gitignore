@@ -6,3 +6,7 @@
 *.iml
 out
 gen
+graphify-out
+AGENTS.md
+.agents
+skills-lock.json
