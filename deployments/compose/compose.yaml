@@ -24,18 +24,12 @@ services:
     restart: "no"
     environment:
       PGPASSWORD: ${POSTGRES_PASSWORD:?POSTGRES_PASSWORD is required}
+      POSTGRES_USER: ${POSTGRES_USER:-brain}
+      POSTGRES_DB: ${POSTGRES_DB:-brain}
     volumes:
       - ../postgres/migrations:/migrations:ro
-    command: >-
-      sh -ec '
-      for file in /migrations/*.sql; do
-        echo "Applying $$file";
-        psql -v ON_ERROR_STOP=1
-          -h postgres
-          -U "${POSTGRES_USER:-brain}"
-          -d "${POSTGRES_DB:-brain}"
-          -f "$$file";
-      done'
+      - ../postgres/migrate.sh:/migrate.sh:ro
+    command: ["sh", "/migrate.sh"]
     depends_on:
       postgres:
         condition: service_healthy
