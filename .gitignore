@@ -3,6 +3,7 @@
 
 # IntelliJ project files
 .idea
+.vscode/
 *.iml
 out
 gen
@@ -10,3 +11,13 @@ graphify-out
 AGENTS.md
 .agents
 skills-lock.json
+.env
+__pycache__/
+.pytest_cache/
+*.pyc
+.coverage
+.DS_Store
+secrets/*
+!secrets/.gitkeep
+data/documents/*
+!data/documents/.gitkeep
